@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e
+
+dotnet restore
+dotnet build -c release -o dist
+
+cd dist
+tag=$(date +%Y%m%d_%H%M%S)
+echo "Will build sample-dotnet-mvc-app-$tag.zip"
+zip -r ../sample-dotnet-mvc-app-$tag.zip *
+cd ..
+
+
